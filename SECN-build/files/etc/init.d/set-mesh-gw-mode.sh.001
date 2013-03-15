@@ -1,0 +1,34 @@
+#!/bin/sh -x
+
+# /etc/init.d/set-mesh-gw-mode.sh
+# This script sets the mesh gateway mode and bridge loop avoidance mode on startup
+
+# Get the MPGW setting from /etc/config/secn
+MPGW=`uci get secn.mpgw.mode`
+
+# Set up mesh gateway mode
+if [ $MPGW = "OFF" ]; then
+  batctl gw off
+  uci set batman-adv.bat0.gw_mode=off
+  fi
+
+if [ $MPGW = "SERVER" ]; then
+  batctl gw server
+  uci set batman-adv.bat0.gw_mode=server
+  fi
+
+if [ $MPGW = "CLIENT" ]; then
+  batctl gw client
+  uci set batman-adv.bat0.gw_mode=client
+  fi
+
+uci commit batman-adv
+
+# Enable Bridge Loop Avoidance mode
+/usr/sbin/batman-adv restart
+/usr/sbin/batctl bl 1
+sleep 2
+# Add bat0 to bridge now that bl is enabled
+brctl addif br-lan bat0
+
+###

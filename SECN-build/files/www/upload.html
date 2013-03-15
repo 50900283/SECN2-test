@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<style type="text/css">
+	@import url(/lib/configstyle.css); 
+	</style>
+	<title>Firmware Upload</title>
+</head>
+
+<body>
+<div class="section">
+	<div class="topbar">
+		<img src="/images/vtlogo.png" alt="Village Telco">
+		<div class="titletext">	
+			<h1>Firmware Upload</h1>
+		</div>
+	</div>
+</div>
+
+
+<html>
+	<body>
+		<form action="cgi-bin/upload.sh" method="post" enctype="multipart/form-data">
+<br />
+<br />
+			<label for="file">Filename:</label>
+			<input type="file" name="file" id="file" /> 
+			<br />
+			<input type="submit" name="submit" value="Submit" />
+
+		</form>
+	</body>
+</html>
+
