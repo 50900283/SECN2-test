@@ -13,7 +13,6 @@ cat > /tmp/conf-save.sh << EOF
 ENABLE="0"
 REGISTER="0"
 BUTTON="0"
-AUTH="0"
 LIMITIP="0"
 ENSSL="0"
 
@@ -74,6 +73,7 @@ if [ \$BUTTON = "Set+Password" ]; then
 	cat /tmp/setpassword.txt | grep change > /tmp/passwordstatus.txt
 	echo ". Reboot to activate web UI Authentication" >> /tmp/passwordstatus.txt
 	uci set secn.http.pw_preset="1"
+	uci set secn.http.auth="checked"
 	uci commit secn
 	exit
 fi
@@ -122,7 +122,6 @@ if [ \$SECRET != "****" ]; then					# Set the password only if newly entered
 fi
 
 # Save the web server settings
-uci set secn.http.auth=\$AUTH
 uci set secn.http.limitip=\$LIMITIP
 uci set secn.http.enssl=\$ENSSL
 
