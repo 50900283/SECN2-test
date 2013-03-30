@@ -1,0 +1,18 @@
+#!/usr/bin/haserl  --upload-limit=32768 --shell=/bin/ash
+<% echo -en "content-type: text/html\r\n\r\n" %>
+<html>
+<head><title>Upgrading Firmware - Do not disconnect</title></head>
+<body>
+    <h1>Upgrading Firmware - Do not disconnect</h1>
+
+<pre>
+<% PREAMBLE="env LD_LIBRARY_PATH=/lib:/usr/lib:/user/lib:/user/usr/lib:/lib/upgrade PATH=/bin:/sbin:/usr/bin:/usr/sbin:/user/bin:/user/sbin:/user/usr/bin:/user/usr/sbin " %>
+
+<% upgr_cmd="$PREAMBLE /sbin/sysupgrade $FORM_preserve $FORM_firmware" %>
+<% sleep 3 %>
+Executing <i><% echo $upgr_cmd %></i><p>
+<% $upgr_cmd %>
+<% echo "Processing upgrade..." %>
+</pre>
+</body>
+</html> 
