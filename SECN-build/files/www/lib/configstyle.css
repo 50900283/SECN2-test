@@ -25,7 +25,11 @@ p, h1, form, button{border:0; margin:0; padding:0;}
 .section {
     margin: 0 0 30px;
     margin:0 auto;
+<<<<<<< Updated upstream
     width:900px;
+=======
+    width:800px;
+>>>>>>> Stashed changes
     padding:14px;
         -moz-border-radius: 20px;
         -webkit-border-radius: 20px;
@@ -49,6 +53,7 @@ p, h1, form, button{border:0; margin:0; padding:0;}
 	*display:inline;
 	background: #eee;
 	border: solid 1px #999;
+    border-radius: 4px 4px 0 0;
 	border-bottom: none;
 		-moz-border-radius: 4px 4px 0 0;
 		-webkit-border-radius: 4px 4px 0 0;
@@ -74,6 +79,7 @@ p, h1, form, button{border:0; margin:0; padding:0;}
 /* ----------- CSS for tabs ----------- */
 
 
+<<<<<<< Updated upstream
 .myform {
     height:560px;
 }
@@ -86,6 +92,9 @@ p, h1, form, button{border:0; margin:0; padding:0;}
 .myform-wireless {
     height: 910px;
 }
+=======
+
+>>>>>>> Stashed changes
 iframe {
     width:100%;
     overflow-y:auto;

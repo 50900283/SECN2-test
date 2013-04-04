@@ -1,4 +1,6 @@
-$(function() {
+$(document).ready( function() {
+    $('#tab-container').easytabs();
+
 	$.validator.addMethod('IP4Checker', function(value) {
 		var ip = "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
 		return value.match(ip);
@@ -70,17 +72,6 @@ $(function() {
 		},
 		success: function(label) { 
 			label.html("").addClass("checked");
-		},
-
-		submitHandler: function(form) {
-	        $.ajax({
-	            url: form.action,
-	            type: form.method,
-	            data: $(form).serialize(),
-	            success: function(response) {
-	            	alert("submitted!"); 
-	            }
-        	});
 		}
 	});
 
@@ -143,16 +134,12 @@ $(function() {
 			minlength: 3,
 			equalTo: "#PASSWORD1"
 			}
-			},
+		},
 		success: function(label) { 
-		label.html("").addClass("checked");
+			label.html("").addClass("checked");
 		}
 	});
-
 });
 
-$(document).ready(function() {
-	$('#tab-container').easytabs();
-});
 
 

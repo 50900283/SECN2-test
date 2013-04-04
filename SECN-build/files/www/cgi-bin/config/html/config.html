@@ -5,10 +5,10 @@ cat > /tmp/config.html << EOF
 	<title>SECN Configuration</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<style type="text/css">	@import url(/lib/configstyle.css); 	</style>
-	<script type="text/javascript" src="/lib/jquery-1.9.1.min.js"></script>
-	<script type="text/javascript" src="/lib/jquery.easytabs.min.js"></script>
+	<script type="text/javascript" src="/lib/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="/lib/jquery.hashchange.min.js"></script>
-	<script type="text/javascript" src="/lib/jquery.validate.js"></script>
+	<script type="text/javascript" src="/lib/jquery.easytabs.min.js"></script>
+	<script type="text/javascript" src="/lib/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="/lib/checkip.js"></script>
 </head>
 
@@ -37,7 +37,7 @@ cat > /tmp/config.html << EOF
 
 		<!-- Basic Configuration Form -->
 		<div id="tabs1-basic">
-			<form name="MP" METHOD="GET" ACTION="/cgi-bin/config/conf-sub.sh">
+			<form name="MP" id="MP" METHOD="GET" ACTION="/cgi-bin/config/conf-sub.sh">
 				<fieldset class="network">
 					<legend>Network</legend>
 					<table>
@@ -179,7 +179,7 @@ cat > /tmp/config.html << EOF
 
 		<!-- Advanced Configuration Form -->
 		<div id="tabs1-advanced">
-			<form name="MP-ADV" METHOD=GET ACTION="/cgi-bin/config/conf-sub-adv.sh">
+			<form name="MP-ADV" id="MP-ADV" METHOD=GET ACTION="/cgi-bin/config/conf-sub-adv.sh">
 				Time: $UPTIME  TZ: $TZ
 				<fieldset class="network-adv">
 					<legend>Network</legend>
@@ -465,9 +465,9 @@ cat > /tmp/config.html << EOF
 			</form>
 		</div>
 
-	<!-- Advanced Conf Form 2-->
-	<div id="tabs1-advanced2"
-		<form name="MP" METHOD="GET" ACTION="/cgi-bin/config/conf-sub-adv2.sh">
+		<!-- Advanced Conf Form 2-->
+		<div id="tabs1-advanced2">
+			<form name="MP" METHOD="GET" ACTION="/cgi-bin/config/conf-sub-adv2.sh">
 
 		<fieldset class="dhcp">
 			<legend>WAN Configuration</legend>
@@ -645,8 +645,7 @@ cat > /tmp/config.html << EOF
 	</div>
 
 		<!-- Status Page -->
-<!--
-	<div id="tabs1-status">
+		<div id="tabs1-status">
 			Click the Reload in your browser to refresh the data on this screen.
 			<h3> Available mesh nodes </h3>     
 				<iframe src="/bat1.txt"  width="100%" height="150" >You need a Frames Capable browser to view this content.</iframe>
@@ -656,11 +655,10 @@ cat > /tmp/config.html << EOF
 				<iframe src="/mesh.txt"  width="100%" height="100" >You need a Frames Capable browser to view this content.</iframe>
 			<h3> WiFi Access Point connections</h3>
 				<iframe src="/wifi.txt"  width="100%" height="100" >You need a Frames Capable browser to view this content.</iframe>
-	</div>
--->
-
+		</div>
 	</div>
 </div>
+
 </body>
 </html>
 
