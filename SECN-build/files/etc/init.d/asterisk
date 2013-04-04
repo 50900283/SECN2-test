@@ -1,7 +1,7 @@
 #!/bin/sh /etc/rc.common
 # Copyright (C) 2006 OpenWrt.org
 # /etc/init.d/asterisk
-# Adapted for Village Telco Mesh Potato
+# Adapted for Village Telco devices with Asterisk 1.8
 # Elektra, T Gillett, K Williamson 2011
 
 START=99 
@@ -18,8 +18,7 @@ restart() {
   sleep 2
 
   # restart asterisk
-  #$DEST/usr/sbin/asterisk -f 2>&1 > /dev/null &
-  $DEST/usr/sbin/asterisk
+  $DEST/usr/sbin/asterisk -f 2>&1 > /dev/null &
 }
 
 
@@ -33,7 +32,13 @@ reload() {
 
 
 start() {
-  # create asterisk directories
+
+	# Check to see if Asterisk is already running
+	if [ -f $DEST/var/run/asterisk/asterisk.pid ]; then
+		exit
+	fi
+
+  # Create asterisk directories
   [ -f $DEFAULT ] && . $DEFAULT
   [ -d $DEST/var/run/asterisk ] || mkdir -p $DEST/var/run/asterisk
   [ -d $DEST/var/log/asterisk ] || mkdir -p $DEST/var/log/asterisk
@@ -67,24 +72,6 @@ start() {
 	  $DEST/usr/sbin/asterisk -f 2>&1 > /dev/null &   # Start Asterisk
 	  cat /tmp/resolv.conf-backup > /tmp/resolv.conf  # Restore resolv.conf
 	fi	  
-
-	# Restart Asterisk to fix start up issue with SIP 
-	killall asterisk
-
-  # Check whether the first DNS IP is reachable, if this fails we'll cheat a bit ;-)
-  # Asterisk needs to be able to ping the DNS nameserver address
-  # Check if nameserver can be pinged
-  DNS=`grep -m 1  nameserver /etc/resolv.conf | cut -d \  -f 2` # Find first nameserver address
-  if  ping -c 1 $DNS 
-	then                           
-	  $DEST/usr/sbin/asterisk -f 2>&1 > /dev/null &   # Success, so start Asterisk
-	else
-	  cp /tmp/resolv.conf /tmp/resolv.conf-backup     # Fail, so backup resolv.conf
-	  echo "nameserver 127.0.0.1" > /tmp/resolv.conf  # Make a temp copy
-	  $DEST/usr/sbin/asterisk -f 2>&1 > /dev/null &   # Start Asterisk
-	  cat /tmp/resolv.conf-backup > /tmp/resolv.conf  # Restore resolv.conf
-	fi	  
-
 }
 
 

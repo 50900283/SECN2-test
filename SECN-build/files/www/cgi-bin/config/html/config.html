@@ -2,11 +2,9 @@ cat > /tmp/config.html << EOF
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
-	<title>Mesh Potato SECN Configuration</title>
+	<title>SECN Configuration</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<style type="text/css">
-	@import url(/lib/configstyle.css); 
-	</style>
+	<style type="text/css">	@import url(/lib/configstyle.css); 	</style>
 	<script type="text/javascript" src="/lib/jquery-1.9.1.min.js"></script>
 	<script type="text/javascript" src="/lib/jquery.easytabs.min.js"></script>
 	<script type="text/javascript" src="/lib/jquery.hashchange.min.js"></script>
@@ -18,18 +16,25 @@ cat > /tmp/config.html << EOF
 <div class='banner'>
 	<img class="logo" src="/images/vtlogo.png" alt="Village Telco">
 	<div class="titletext">	
-		<h1 class="textbanner">Mesh-Potato AA SECN Configuration</h1>
+		<h1 class="textbanner">SECN Configuration</h1> 
+		<p>.</p>
 		<p class="textbanner">Firmware: SECN $VERSION</p>
 		Date: $DATE
 	</div>
 </div>
+
 <div id="tab-container" class="tab-container">
 	<ul class='etabs'>
 	  <li class="tab"><a href="#tabs1-basic">Basic</a></li>
 	  <li class="tab"><a href="#tabs1-advanced">Advanced</a></li>
-	  <li class="tab"><a href="#tabs1-status">Status</a></li>
+	  <li class="tab"><a href="#tabs1-advanced2">WAN</a></li>
+	  <a href="/status.html">. Status</a>
+	  <a href="/cgi-bin/fwupload">. Firmware </a>
 	</ul>
+
+
 	<div class="panel-container">
+
 		<!-- Basic Configuration Form -->
 		<div id="tabs1-basic">
 			<form name="MP" METHOD="GET" ACTION="/cgi-bin/config/conf-sub.sh">
@@ -48,6 +53,11 @@ cat > /tmp/config.html << EOF
 							<td class="label"><label for="Test"> Find Gateway </label></td>
 							<td class="field"> <INPUT TYPE="SUBMIT" name="BUTTON" VALUE="Test" > </td>
 						</tr>
+				</table>
+				<table>
+					<tr>
+					<td class="ast_reg"> $GATEWAY_STATUS </td>
+					</tr>
 					</table>
 				</fieldset>
 
@@ -129,6 +139,11 @@ cat > /tmp/config.html << EOF
 							<td class="field"> <INPUT TYPE="SUBMIT" name="BUTTON" VALUE="Set Password" > </td>
 						</tr>
 					</table>
+				<table>
+					<tr>
+						<td class="ast_reg"> $PASSWORD_STATUS </td>
+					</tr>
+				</table>
 				</fieldset>
 
 				<fieldset class="password">
@@ -159,14 +174,9 @@ cat > /tmp/config.html << EOF
 					</tr>
 				</table>
 
-				<table>
-					<tr>	
-						<td class="ast_reg"> $GATEWAY_STATUS  </td>
-						<td class="ast_reg"> $PASSWORD_STATUS </td>
-					</tr>
-				</table>
 			</form>
 		</div>	
+
 		<!-- Advanced Configuration Form -->
 		<div id="tabs1-advanced">
 			<form name="MP-ADV" METHOD=GET ACTION="/cgi-bin/config/conf-sub-adv.sh">
@@ -454,8 +464,189 @@ cat > /tmp/config.html << EOF
 				</table>
 			</form>
 		</div>
+
+	<!-- Advanced Conf Form 2-->
+	<div id="tabs1-advanced2"
+		<form name="MP" METHOD="GET" ACTION="/cgi-bin/config/conf-sub-adv2.sh">
+
+		<fieldset class="dhcp">
+			<legend>WAN Configuration</legend>
+			<table>
+				<tr>
+					<td class="label"><label> WAN Port</label></td>
+					<td class="field">
+					<SELECT name="WANPORT" id="wanport">
+						<option selected="$WANPORT">$WANPORT</option>
+						<option value="Disable"> Disable </option>
+						<option value="Ethernet"> Ethernet </option>
+						<option value="USB-Modem"> USB-Modem </option>
+						<option value="WiFi"> WiFi </option>
+						</SELECT>
+					</td>
+					<td class="label"><label> Note: If a WiFi WAN port is selected, Mesh and AP interfaces are disabled on that port. </label> </td>
+				</tr>
+			</table>
+
+			<table>
+				<tr>
+					<td class="label"><label>WAN IP Mode</label></td>
+					<td class="field">
+					<SELECT name="ETHWANMODE" id="ethwanmode">
+						<option selected="$ETHWANMODE">$ETHWANMODE</option>
+						<option value="DHCP"> DHCP </option>
+						<option value="Static"> Static </option>
+					</SELECT>
+				</td>
+				</tr>
+
+				<tr>	
+					<td class="label"><label> <H4>Static Network Settings</H4> </label> </td>
+				</tr>
+
+				<tr>
+					<td class="label"><label for="WANIP">Static IP</label></td>
+					<td class="field"><input type="text" name="WANIP" id="wanip" VALUE=$WANIP ></td>
+					
+					<td class="label"><label for="WANGATEWAY">Gateway</label></td>
+					<td class="field"><input type="text" name="WANGATEWAY" id="wangateway" VALUE=$WANGATEWAY ></td>
+				</tr>
+
+				<tr>
+					<td class="label"><label for="WANMASK">Netmask</label></td>
+					<td class="field"><input type="text" name="WANMASK" id="wanmask" VALUE=$WANMASK ></td>
+					
+					<td class="label"><label for="WANDNS">DNS</label></td>
+					<td class="field"><input type="text" name="WANDNS" id="wandns" VALUE=$WANDNS ></td>
+				</tr>
+
+
+				<tr>	
+					<td class="label"><label> <H4>WiFi WAN Host Settings</H4> </label> </td>
+				</tr>
+
+				<tr>
+					<td class="label"><label for="wanssid">SSID</label></td>
+					<td class="field"><input type="text" name="WANSSID" id="wanssid" VALUE=$WANSSID ></td>
+					<td></td>
+				</tr>
+
+				<tr>	
+					<td class="label"><label>Passphrase</label></td>
+					<td class="field"><input  type="text" name="WANPASS" id="wanpass" VALUE=$WANPASS ></td>
+
+
+					<td class="label"><label>Encryption</label></td>
+					<td class="field">
+					<SELECT name="WANENCR" id="wanencr">
+						<option selected="$WANENCR">$WANENCR</option>
+						<option value="psk">WPA1</option>
+						<option value="psk2">WPA2</option>
+						<option value="wep">WEP</option>
+						<option value="none">None</option>
+					</SELECT>
+					</td>
+
+				</tr>
+
+				<tr>	
+					<td class="label"><label> <H4>USB Modem Settings</H4> </label> </td>
+				</tr>
+
+				<tr>
+					<td class="label"><label>USB Modem Service</label></td>
+					<td class="field">
+					<SELECT name="MODEMSERVICE" id="modemservice">
+						<option selected="$MODEMSERVICE">$MODEMSERVICE</option>
+						<option value="umts"> UMTS </option>
+						<option value="gprs"> GPRS </option>
+						<option value="cdma"> CDMA </option>
+						<option value="evdo"> EV-DO </option>
+					</SELECT>
+				</td>
+				</tr>
+
+				<tr>
+					<td class="label"><label for="VENDOR">Vendor ID</label></td>
+					<td class="field"><input type="text" name="VENDOR" id="vendor" VALUE=$VENDOR ></td>
+					
+					<td class="label"><label for="PRODUCT">Product ID</label></td>
+					<td class="field"><input type="text" name="PRODUCT" id="product" VALUE=$PRODUCT ></td>
+				</tr>
+
+				<tr>
+					<td class="label"><label for="APN">Service APN</label></td>
+					<td class="field"><input type="text" name="APN" id="apn" VALUE=$APN ></td>
+					
+					<td class="label"><label for="DIALSTR">Dial String</label></td>
+					<td class="field"><input type="text" name="DIALSTR" id="dialstr" VALUE=$DIALSTR ></td>
+				</tr>
+
+				<tr>
+					<td class="label"><label for="APNUSER">Username</label></td>
+					<td class="field"><input type="text" name="APNUSER" id="apnuser" VALUE=$APNUSER ></td>
+					
+					<td class="label"><label for="APNPW">Password</label></td>
+					<td class="field"><input type="text" name="APNPW" id="apnpw" VALUE=$APNPW ></td>
+				</tr>
+
+				<tr>
+					<td class="label"><label for="MODEMPIN">PIN</label></td>
+					<td class="field"><input type="text" name="MODEMPIN" id="modempin" VALUE=$MODEMPIN ></td>
+
+					<td class="label"><label>USB Serial Port</label></td>
+					<td class="field">
+					<SELECT name="MODEMPORT" id="modemport">
+						<option selected="$MODEMPORT">$MODEMPORT</option>
+						<option value="0"> 0 </option>
+						<option value="1"> 1 </option>
+						<option value="2"> 2 </option>
+						<option value="3"> 3 </option>
+						<option value="4"> 4 </option>
+						<option value="5"> 5 </option>
+						<option value="6"> 6 </option>
+						<option value="7"> 7 </option>
+					</SELECT>
+  				</td>
+	  		</tr>
+			</table>
+
+			<table>
+				<tr>	
+					<td class="label"><label> USB Device Detected</label> </td>
+					<td class="ast_reg"> $USBMODEM </td>
+				</tr>
+			</table>
+
+			<table>
+				<tr>	
+					<td class="label"><label> USB Serial Ports Detected</label> </td>
+					<td class="ast_reg"> $USBSERIAL </td>
+				</tr>
+			</table>
+
+			<table>
+				<tr>	
+					<td class="label"><label>USB Modem Status</label> </td>
+					<td class="ast_reg"> $USBSTATUS </td>
+				</tr>
+			</table>
+		</fieldset>
+
+			<table class="submitform">
+				<tr>
+					<td>
+					<INPUT TYPE="SUBMIT" name="BUTTON" VALUE="Refresh" >
+					<INPUT TYPE="SUBMIT" name="BUTTON" VALUE="Save" >
+					<INPUT TYPE="SUBMIT" name="BUTTON" VALUE="Reboot" >
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
 		<!-- Status Page -->
-		<div id="tabs1-status">
+<!--
+	<div id="tabs1-status">
 			Click the Reload in your browser to refresh the data on this screen.
 			<h3> Available mesh nodes </h3>     
 				<iframe src="/bat1.txt"  width="100%" height="150" >You need a Frames Capable browser to view this content.</iframe>
@@ -465,10 +656,11 @@ cat > /tmp/config.html << EOF
 				<iframe src="/mesh.txt"  width="100%" height="100" >You need a Frames Capable browser to view this content.</iframe>
 			<h3> WiFi Access Point connections</h3>
 				<iframe src="/wifi.txt"  width="100%" height="100" >You need a Frames Capable browser to view this content.</iframe>
-		</div>
+	</div>
+-->
+
 	</div>
 </div>
-
 </body>
 </html>
 

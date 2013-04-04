@@ -175,19 +175,7 @@ EOF
 
 # ------------------------------------------------------------------
 
-# Start or stop Asterisk now and enable on boot up if required
-ENABLE_AST=`uci get secn.asterisk.enable_ast`
-if [ $ENABLE_AST = "checked" ]; then
-    /etc/init.d/asterisk start
-    ln -s /etc/init.d/asterisk /etc/rc.d/S99asterisk
-else
-    /etc/init.d/asterisk stop
-    rm /etc/rc.d/S99asterisk
-fi
-
-# ------------------------------------------------------------------
-
-### Set up WiFi 
+# Set up WiFi 
 
 # Get the params from uci config file /etc/config/secn and wireless
 SSID=`uci get secn.accesspoint.ssid`
@@ -279,25 +267,6 @@ uci set dhcp.lan.dhcp_option="3,$OPTION_ROUTER"
 
 uci commit dhcp
 sleep 1
-
-if [ $DHCP_ENABLE = "checked" ]; then
-
-  # Enable start on boot
-  ln -s ../init.d/dnsmasq /etc/rc.d/S60dnsmasq
-
-  # Stop dnsmasq now in case settings have changed
-  /etc/init.d/dnsmasq stop
-  # Start dnsmasq now
-  /etc/init.d/dnsmasq start
-
-else
-
-  # Disable start on boot
-  rm -f /etc/rc.d/S60dnsmasq
-
-  # Stop dnsmasq now
-  /etc/init.d/dnsmasq stop
-fi
 
 #---------------------------------------------
 

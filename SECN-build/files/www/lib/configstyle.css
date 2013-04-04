@@ -7,7 +7,7 @@ p, h1, form, button{border:0; margin:0; padding:0;}
 
 
 .banner {
-    width:830px;
+    width:930px;
     margin:0 auto;
     height: 60px;
 }
@@ -21,11 +21,25 @@ p, h1, form, button{border:0; margin:0; padding:0;}
 .textbanner {
 	vertical-align: text-bottom;
 }
+/* ----------- Added CSS for File Upload ---------*/
+.section {
+    margin: 0 0 30px;
+    margin:0 auto;
+    width:900px;
+    padding:14px;
+        -moz-border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -khtml-border-radius: 20px;
+    border-radius: 20px;
+    border:solid 2px #b7ddf2;
+    background: #FDE2BB;
+}
+
 
 /* ----------- CSS for easytabs ----------- */
 
 .etabs { 
-    width:800px;
+    width:900px;
     margin:0 auto;
 	padding: 0;
 }
@@ -47,7 +61,8 @@ p, h1, form, button{border:0; margin:0; padding:0;}
 
 .tab-container .panel-container { 
     margin:0 auto;
-    width:800px;
+    width:900px;
+    border-radius: 20px;
     border: solid #000 1px;
     padding: 10px;
         -moz-border-radius: 0 10px 10px 10px; 
@@ -63,7 +78,10 @@ p, h1, form, button{border:0; margin:0; padding:0;}
     height:560px;
 }
 .myform-adv {
-    height: 980px;
+    height: 1100px;
+}
+.myform-adv2 {
+    height: 740px;
 }
 .myform-wireless {
     height: 910px;
@@ -73,6 +91,15 @@ iframe {
     overflow-y:auto;
     overflow-x:auto;
 }
+.topbar {
+    width:850px;
+    height:100px;
+    display: inline;
+}
+.titletext       {
+    float: right;
+    text-align: right;
+}
 
 
 
@@ -81,6 +108,7 @@ iframe {
 h1 {
     font-size:18px;
     font-weight:bold;
+    margin-bottom:8px;
     float: right;
     vertical-align: bottom;
 }
@@ -121,6 +149,11 @@ table {
 .field {
     vertical-align: top;
     white-space: nowrap;
+}
+#stylized .field4 {
+    vertical-align: top;
+    white-space: nowrap;
+    width: 20px;
 }
 .ast_reg {
     padding-right: 8px;
