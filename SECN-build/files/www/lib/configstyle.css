@@ -40,10 +40,40 @@ form.upload { display: block; margin: 20px auto; background: #eee; border-radius
 .bar { background-color: #B4F5B4; width:0%; height:20px; border-radius: 3px; }
 .percent { position:absolute; display:inline-block; top:3px; left:48%; }
 
-/* ----------- CSS for easytabs ----------- */
+div.block{
+  overflow:hidden;
+}
+div.block label{
+  width:160px;
+  display:block;
+  float:left;
+  text-align:left;
+}
+div.block .input{
+  margin-left:4px;
+  float:left;
+}
 
+/* ----------- CSS for easytabs ----------- */
+#outer-container {
+    width: 920px;
+    margin: 0 auto;
+}
+#outer-container .panel-container {
+    border: solid 1px #999;
+}
+#outer-container .tab {
+    border: solid 1px #999;
+    border-bottom: none;
+}
+#inner-container .panel-container {
+    border: solid 1px #aaa;
+}
+#inner-container .tab {
+    border: solid 1px #aaa;
+    border-bottom: none;
+}
 .etabs { 
-    width:900px;
     margin:0 auto;
 	padding: 0;
 }
@@ -52,7 +82,6 @@ form.upload { display: block; margin: 20px auto; background: #eee; border-radius
 	zoom:1;
 	*display:inline;
 	background: #eee;
-	border: solid 1px #999;
     border-radius: 4px 4px 0 0;
 	border-bottom: none;
 		-moz-border-radius: 4px 4px 0 0;
@@ -66,17 +95,13 @@ form.upload { display: block; margin: 20px auto; background: #eee; border-radius
 
 .tab-container .panel-container { 
     margin:0 auto;
-    width:900px;
-    border-radius: 20px;
-    border: solid #000 1px;
+    border-radius: 0 10px 10px 10px; 
     padding: 10px;
         -moz-border-radius: 0 10px 10px 10px; 
         -webkit-border-radius: 0 10px 10px 10px;
     background: #FDE2BB;
 }
 .panel-container { margin-bottom: 10px; }
-
-/* ----------- CSS for tabs ----------- */
 
 
 
@@ -103,7 +128,6 @@ h1 {
     font-size:18px;
     font-weight:bold;
     margin-bottom:8px;
-    float: right;
     vertical-align: bottom;
 }
 

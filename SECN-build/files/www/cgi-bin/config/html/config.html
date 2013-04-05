@@ -18,13 +18,12 @@ cat > /tmp/config.html << EOF
 	<img class="logo" src="/images/vtlogo.png" alt="Village Telco">
 	<div class="titletext">	
 		<h1 class="textbanner">SECN Configuration</h1> 
-		<p>.</p>
-		<p class="textbanner">Firmware: SECN $VERSION</p>
-		Date: $DATE
+		<p>Firmware: SECN $VERSION</p>
+		<p>Date: $DATE</p>
 	</div>
 </div>
 
-<div id="tab-container" class="tab-container">
+<div id="outer-container" class="tab-container" >
 	<ul class='etabs'>
 	  <li class="tab"><a href="#tabs1-basic">Basic</a></li>
 	  <li class="tab"><a href="#tabs1-advanced">Advanced</a></li>
@@ -647,39 +646,31 @@ cat > /tmp/config.html << EOF
 					</div>
 					<div id="tab-fw">
 						<form action="/cgi-bin/fwprocess" class="upload" method="POST" enctype="multipart/form-data" >
-							<table>
-								<tr>
-									<td><label>Filename</label></td>
-							<td><input type="file" name="uploadfile"></td>
-								</tr>
-								<tr>
-									<td><label>Checksum</label></td>
-							<td><input type="text" name="checksum"></td>
-								</tr>
-								<tr>
-									<td></td>
-							<td><input type="submit" value="Upload File to Server"></td>
-								</tr>
-							</table>
+							<h3>Upgrade your firmware</h3>
+							<div class="block">
+								<label>Filename</label>
+								<input class="input" type="file" name="uploadfile" size="50">
+							</div>
+							<div class="block">
+								<label>Ignore Checksum?</label>
+								<input class ="input" type="checkbox" name="tocheck" value="ignore">
+							</div>
+							<div class="block hidechecksum">
+								<label>Paste checksum</label>
+								<input class="input" type="text" name="checksum" size="35">
+							</div>
+							<div class="block">
+								<input class="input" type="submit" value="Upload File to Server">
+							</div>
 						</form>
-						<table>
-							<tr>
-								<td><label>Progress</label></td>
-								<td>    
-									<div class="progress">
-										<div class="bar"></div >
-										<div class="percent">0%</div >
-									</div>
-								</td>
-							</tr>
-						</table>
-						<table>
-							<tr>
-								<td>    
-									<div id="status"></div>
-								</td>
-							</tr>
-						</table>
+						<div>
+							<label>Progress</label>
+							<div class="progress">
+								<div class="bar"></div >
+								<div class="percent">0%</div >
+							</div>
+							<div id="status"></div>
+						</div>
 					</div>
 				</div>
 			</div>

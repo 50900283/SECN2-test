@@ -1,7 +1,15 @@
 $(document).ready( function() {
-    $('#tab-container').easytabs();
-    $('#inner-container').easytabs();
+// call easytabs
+	$('#outer-container, #inner-container').easytabs();
 
+// option to hide checkum in firmware upgrade 
+    $("input[name='tocheck']").click(function() {
+        var val = $(this).val();
+        $('.hidechecksum').hide();
+        $('#'+val).show();
+    });
+
+// function to refresh iframes on status page
     setInterval(refreshIframe, 10000);
     function refreshIframe() {
         $("#FrameID1")[0].src = $("#FrameID1")[0].src;
@@ -31,6 +39,8 @@ $(document).ready( function() {
             }
         }); 
     })();     
+
+// jquery form validator code
 
 	$.validator.addMethod('IP4Checker', function(value) {
 		var ip = "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
