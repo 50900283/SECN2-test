@@ -1,5 +1,36 @@
 $(document).ready( function() {
     $('#tab-container').easytabs();
+    $('#inner-container').easytabs();
+
+    setInterval(refreshIframe, 10000);
+    function refreshIframe() {
+        $("#FrameID1")[0].src = $("#FrameID1")[0].src;
+        $("#FrameID2")[0].src = $("#FrameID2")[0].src;
+        $("#FrameID3")[0].src = $("#FrameID3")[0].src;
+        $("#FrameID4")[0].src = $("#FrameID4")[0].src;
+    }
+
+    (function() {
+        var bar = $('.bar');
+        var percent = $('.percent');
+        var status = $('#status');
+        $('form').ajaxForm({
+            beforeSend: function() {
+                status.empty();
+                var percentVal = '0%';
+                bar.width(percentVal)
+                percent.html(percentVal);
+            },
+            uploadProgress: function(event, position, total, percentComplete) {
+                var percentVal = percentComplete + '%';
+                bar.width(percentVal)
+                percent.html(percentVal);
+            },
+            complete: function(xhr) {
+                status.html(xhr.responseText);
+            }
+        }); 
+    })();     
 
 	$.validator.addMethod('IP4Checker', function(value) {
 		var ip = "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";

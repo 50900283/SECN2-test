@@ -20,59 +20,52 @@ form { display: block; margin: 20px auto; background: #eee; border-radius: 10px;
 	<div class="section">
 		<div class="topbar">
 			<img src="/images/vtlogo.png" alt="Village Telco">
-				<div class="titletext">	
-					<h1>SECN Configuration</h1>
-				</div>
+			<div class="titletext">	
+				<h1>SECN Configuration</h1>
+			</div>
 		</div>
 
 		<p> <a href="/cgi-bin/secn-tabs"> SECN Configuration Interface</a> </p>
 
-
 		<h1>Firmware Upload</h1>
 
-    <form action="/cgi-bin/fwprocess" method="POST" enctype="multipart/form-data" >
-
+	    <form action="/cgi-bin/fwprocess" method="POST" enctype="multipart/form-data" >
 			<table>
 				<tr>
 					<td><label>Filename</label></td>
-        	<td><input type="file" name="uploadfile"></td>
+	    	<td><input type="file" name="uploadfile"></td>
 				</tr>
 				<tr>
 					<td><label>Checksum</label></td>
-        	<td><input type="text" name="checksum"></td>
+	    	<td><input type="text" name="checksum"></td>
 				</tr>
 				<tr>
 					<td></td>
-        	<td><input type="submit" value="Upload File to Server"></td>
+	    	<td><input type="submit" value="Upload File to Server"></td>
 				</tr>
 			</table>
+	    </form>
+		<table>
+			<tr>
+				<td><label>Progress</label></td>
+				<td>    
+					<div class="progress">
+			<div class="bar"></div >
+			<div class="percent">0%</div >
+				</td>
+			</tr>
+		</table>
 
-
-			<table>
-				<tr>
-					<td><label>Progress</label></td>
-					<td>    
-						<div class="progress">
-        		<div class="bar"></div >
-        		<div class="percent">0%</div >
-					</td>
-				</tr>
-			</table>
-
-			<table>
-				<tr>
-					<td>    
-   					<div id="status"> </div>
-					</td>
-				</tr>
-			</table>
-
-    </form>
+		<table>
+			<tr>
+				<td>    
+					<div id="status"> </div>
+				</td>
+			</tr>
+		</table>
 	</div>
 
-
-
-<script src="/lib/jquery-1.9.1.min.js"></script>
+<script src="/lib/jquery-1.7.1.min.js"></script>
 <script src="/lib/jquery.form.min.js"></script>
 <script>
     (function() {
