@@ -1,18 +1,51 @@
 #!/usr/bin/haserl  --upload-limit=32768 --shell=/bin/ash
+<% PREAMBLE="env LD_LIBRARY_PATH=/lib:/usr/lib:/user/lib:/user/usr/lib:/lib/upgrade PATH=/bin:/sbin:/usr/bin:/usr/sbin:/user/bin:/user/sbin:/user/usr/bin:/user/usr/sbin " %>
+<% upgr_cmd="$PREAMBLE /sbin/sysupgrade $FORM_preserve $FORM_firmware" %>
 <% echo -en "content-type: text/html\r\n\r\n" %>
 <html>
-<head><title>Upgrading Firmware - Do not disconnect</title></head>
+<head>
+  <title>Upgrading Firmware - Do not disconnect</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="refresh" content="140; URL=/index.html">
+	<style type="text/css">
+	@import url(/lib/configstyle.css); 
+	</style>
+</head>
+
 <body>
-    <h1>Upgrading Firmware - Do not disconnect</h1>
+  <div class="section">
+    <div class="topbar">
+      	<img src="/images/vtlogo.png" alt="Village Telco">
+		<div class="titletext">	
+		  <h1>VT SECN Configuration</h1>
+		</div>
+    </div>
 
-<pre>
-<% PREAMBLE="env LD_LIBRARY_PATH=/lib:/usr/lib:/user/lib:/user/usr/lib:/lib/upgrade PATH=/bin:/sbin:/usr/bin:/usr/sbin:/user/bin:/user/sbin:/user/usr/bin:/user/usr/sbin " %>
+	
+	<h2> Upgrading firmware. Please wait 2 minutes. </h2>
 
-<% upgr_cmd="$PREAMBLE /sbin/sysupgrade $FORM_preserve $FORM_firmware" %>
-<% sleep 3 %>
-Executing <i><% echo $upgr_cmd %></i><p>
-<% $upgr_cmd %>
-<% echo "Processing upgrade..." %>
-</pre>
+	<span id="seconds">120</span>.
+	<script>
+	  var seconds = 120;
+	  setInterval(
+  	    function(){
+              document.getElementById('seconds').innerHTML = --seconds;
+            }, 1000
+          );
+	</script>
+
+	<p></p>
+	Return to: <a href="http://10.130.1.20/cgi-bin/secn-tabs"> VT SECN Configuration </a>
+
+	
+	Executing <i><% echo $upgr_cmd %></i><p>
+	<% echo "Processing upgrade..." %>
+	
+	<pre>
+		<% $upgr_cmd %>
+	</pre>
+	</div>
+
+
 </body>
 </html> 

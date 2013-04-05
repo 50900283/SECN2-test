@@ -15,11 +15,11 @@
 
     <table>
     	<tr>
-    		<td>The checksum of the uploaded file is</td>
+    		<td align="right">The checksum of the uploaded file is:</td>
     		<td><% echo $upload_md5sum %></td>
     	</tr>
     	<tr>
-    		<td>The checksum you uploaded is:</td>
+    		<td align="right">The checksum you submitted is:</td>
     		<td><% echo $FORM_checksum %></td>
     	</tr>
     </table>
