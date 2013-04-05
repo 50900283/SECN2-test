@@ -295,6 +295,7 @@ uci commit batman-adv
 
 # Create new config files
 /etc/init.d/config_secn > /dev/null
+/etc/init.d/config_secn-2 > /dev/null
 # Make sure file writing is complete
 sleep 2
 
