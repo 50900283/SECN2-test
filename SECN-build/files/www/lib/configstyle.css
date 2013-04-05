@@ -41,9 +41,11 @@ form.upload { display: block; margin: 20px auto; background: #eee; border-radius
 .percent { position:absolute; display:inline-block; top:3px; left:48%; }
 
 /* ----------- CSS for easytabs ----------- */
-
+#outer-container {
+    width: 920px;
+    margin: 0 auto;
+}
 .etabs { 
-    width:900px;
     margin:0 auto;
 	padding: 0;
 }
@@ -65,9 +67,7 @@ form.upload { display: block; margin: 20px auto; background: #eee; border-radius
 
 
 .tab-container .panel-container { 
-    margin:0 auto;
-    width:900px;
-    border-radius: 20px;
+    border-radius: 0 10px 10px 10px; 
     border: solid #000 1px;
     padding: 10px;
         -moz-border-radius: 0 10px 10px 10px; 
@@ -75,6 +75,8 @@ form.upload { display: block; margin: 20px auto; background: #eee; border-radius
     background: #FDE2BB;
 }
 .panel-container { margin-bottom: 10px; }
+
+
 
 /* ----------- CSS for tabs ----------- */
 

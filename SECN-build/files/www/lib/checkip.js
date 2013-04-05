@@ -1,6 +1,6 @@
 $(document).ready( function() {
-    $('#tab-container').easytabs();
-    $('#inner-container').easytabs();
+
+	$('#outer-container, #inner-container').easytabs();
 
     setInterval(refreshIframe, 10000);
     function refreshIframe() {
