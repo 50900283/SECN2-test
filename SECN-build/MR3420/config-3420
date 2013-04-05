@@ -1,7 +1,7 @@
 #
 # Automatically generated make config: don't edit
 # OpenWrt version: Attitude Adjustment (r34386)
-# Wed Nov 28 07:59:17 2012
+# Fri Mar 22 14:26:19 2013
 #
 CONFIG_HAVE_DOT_CONFIG=y
 # CONFIG_TARGET_ppc40x is not set
@@ -1362,6 +1362,7 @@ CONFIG_PACKAGE_iptables=y
 #
 # Routing and Redirection
 #
+# CONFIG_PACKAGE_babeld is not set
 # CONFIG_PACKAGE_ip is not set
 # CONFIG_PACKAGE_relayd is not set
 
@@ -1379,6 +1380,11 @@ CONFIG_PACKAGE_openssh-sftp-server=y
 #
 # Telephony
 #
+
+#
+# VPN
+#
+# CONFIG_PACKAGE_tinc is not set
 
 #
 # Web Servers/Proxies
@@ -1465,6 +1471,7 @@ CONFIG_PACKAGE_libiwinfo=y
 CONFIG_PACKAGE_libjson=y
 # CONFIG_PACKAGE_libltdl is not set
 # CONFIG_PACKAGE_liblua is not set
+# CONFIG_PACKAGE_liblzo is not set
 # CONFIG_PACKAGE_libmount is not set
 # CONFIG_PACKAGE_libncurses is not set
 # CONFIG_PACKAGE_libncursesw is not set
@@ -2010,6 +2017,7 @@ CONFIG_PACKAGE_comgt=y
 # CONFIG_PACKAGE_gdbserver is not set
 # CONFIG_PACKAGE_getopt is not set
 # CONFIG_PACKAGE_gpioctl is not set
+CONFIG_PACKAGE_haserl=y
 # CONFIG_PACKAGE_hwclock is not set
 # CONFIG_PACKAGE_iwcap is not set
 CONFIG_PACKAGE_iwinfo=y
