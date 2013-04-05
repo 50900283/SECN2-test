@@ -5,9 +5,6 @@
 # This script creates various config files based on parameters in 
 # /etc/config/secn, /etc/config/network and /etc/config/wireless
 
-# Update the banner file with SECN version
-cat /etc/secn_version >> /etc/banner
-
 ### Set up Asterisk config files
 # Remove old files
 rm /etc/asterisk/potato.sip.conf >> /dev/null
