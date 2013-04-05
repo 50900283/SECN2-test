@@ -307,7 +307,7 @@ WANPASS=`uci get secn.wan.wanpass`
 WANENCR=`uci get secn.wan.wanencr`
 
 # Set up for default WAN disabled
-uci set network.lan.ifname='eth0'
+uci set network.lan.ifname='eth1'
 
 uci set network.wan.ifname=''
 uci set network.wan.proto=''
@@ -330,8 +330,8 @@ uci set wireless.sta_0.disabled='1'
 
 if [ $WANPORT = "Ethernet" ]; then
  	# Set up for Eth WAN port
-	uci set network.lan.ifname='eth0'
-	uci set network.wan.ifname='eth1'
+	uci set network.lan.ifname='eth1'
+	uci set network.wan.ifname='eth0'
 fi
 
 if [ $WANPORT = "WiFi" ]; then
