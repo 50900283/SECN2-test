@@ -23,7 +23,7 @@ DIR=$DATE"-TP"
 
 echo " Copy files from Git repo into build folder"
 rm -r ./SECN-build/files/*
-cp -r ~/Git/SECN2-test/SECN-build/files ./SECN-build/
+cp -r -f ~/Git/SECN2-test/SECN-build/* ./SECN-build/
 
 ###########################
 
@@ -72,7 +72,7 @@ echo "Check .config version and target"
 cat ./.config | grep "OpenWrt version"
 cat ./.config | grep "CONFIG_TARGET" | grep "generic_" | grep "=y"
 echo "Check banner version"
-cat ./files/etc/banner | grep "Version"
+cat ./files/etc/secn_version | grep "Version"
 echo ""
 
 echo "Run make for WR703"
@@ -122,7 +122,7 @@ cp ./.config ./SECN-build/WR842/.config
 echo "Check .config version"
 cat ./.config | grep "OpenWrt version"
 echo "Check banner version"
-cat ./files/etc/banner | grep "Version"
+cat ./files/etc/secn_version | grep "Version"
 echo ""
 
 echo "Run make for WR842"
@@ -140,7 +140,7 @@ echo "End WR842 build"
 echo ""
 
 ##################
-exit  #  Uncomment to end the build process here
+#exit  #  Uncomment to end the build process here
 
 
 echo '----------------------------'
@@ -173,7 +173,7 @@ cp ./.config ./SECN-build/WDR4300/.config
 echo "Check .config version"
 cat ./.config | grep "OpenWrt version"
 echo "Check banner version"
-cat ./files/etc/banner | grep "Version"
+cat ./files/etc/secn_version | grep "Version"
 echo ""
 
 echo "Run make for WDR4300"
@@ -224,7 +224,7 @@ cp ./.config ./SECN-build/MR3020/.config
 echo "Check .config version"
 cat ./.config | grep "OpenWrt version"
 echo "Check banner version"
-cat ./files/etc/banner | grep "Version"
+cat ./files/etc/secn_version | grep "Version"
 echo ""
 
 echo "Run make for MR3020"
@@ -273,7 +273,7 @@ cp ./.config ./SECN-build/MR11U/.config
 echo "Check .config version"
 cat ./.config | grep "OpenWrt version"
 echo "Check banner version"
-cat ./files/etc/banner | grep "Version"
+cat ./files/etc/secn_version | grep "Version"
 echo ""
 
 echo "Run make for MR11U"
@@ -324,7 +324,7 @@ cp ./.config ./SECN-build/MR3420/.config
 echo "Check .config version"
 cat ./.config | grep "OpenWrt version"
 echo "Check banner version"
-cat ./files/etc/banner | grep "Version"
+cat ./files/etc/secn_version | grep "Version"
 echo ""
 
 echo "Run make for MR3420"
@@ -375,7 +375,7 @@ cp ./.config ./SECN-build/WR841/.config
 echo "Check .config version"
 cat ./.config | grep "OpenWrt version"
 echo "Check banner version"
-cat ./files/etc/banner | grep "Version"
+cat ./files/etc/secn_version | grep "Version"
 echo ""
 
 echo "Run make for WR841"
@@ -426,7 +426,7 @@ cp ./.config ./SECN-build/WR741/.config
 echo "Check .config version"
 cat ./.config | grep "OpenWrt version"
 echo "Check banner version"
-cat ./files/etc/banner | grep "Version"
+cat ./files/etc/secn_version | grep "Version"
 echo ""
 
 echo "Run make for WR741"
