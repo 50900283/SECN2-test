@@ -1,6 +1,14 @@
 $(document).ready( function() {
 // call easytabs
 	$('#outer-container, #inner-container').easytabs();
+	
+// form submit responses
+$('#MP').ajaxForm(function() { 
+	alert("Changes submitted."); 
+}); 
+$('#MP-ADV').ajaxForm(function() { 
+	alert("Changes submitted."); 
+}); 
 
 // option to hide checkum in firmware upgrade 
     $("input[name='tocheck']").click(function() {
@@ -18,11 +26,13 @@ $(document).ready( function() {
         $("#FrameID4")[0].src = $("#FrameID4")[0].src;
     }
 
+// File upload progress bar
+
     (function() {
         var bar = $('.bar');
         var percent = $('.percent');
         var status = $('#status');
-        $('form').ajaxForm({
+        $('#fupload').ajaxForm({
             beforeSend: function() {
                 status.empty();
                 var percentVal = '0%';
