@@ -9,7 +9,6 @@ cat > /tmp/config.html << EOF
 	<script type="text/javascript" src="/lib/jquery.hashchange.min.js"></script>
 	<script type="text/javascript" src="/lib/jquery.easytabs.min.js"></script>
 	<script type="text/javascript" src="/lib/jquery.validate.min.js"></script>
-	<script type="text/javascript" src="/lib/jquery.form.min.js"></script>
 	<script type="text/javascript" src="/lib/checkip.js"></script>
 </head>
 
@@ -645,32 +644,7 @@ cat > /tmp/config.html << EOF
 						</form>
 					</div>
 					<div id="tab-fw">
-						<form action="/cgi-bin/fwprocess" class="upload" id="fupload" method="POST" enctype="multipart/form-data" >
-							<h3>Upgrade your firmware</h3>
-							<div class="block">
-								<label>Filename</label>
-								<input class="input" type="file" name="uploadfile" size="50">
-							</div>
-							<div class="block">
-								<label>Ignore Checksum?</label>
-								<input class ="input" type="checkbox" name="tocheck" value="ignore">
-							</div>
-							<div class="block hidechecksum">
-								<label>Paste checksum</label>
-								<input class="input" type="text" name="checksum" size="35">
-							</div>
-							<div class="block">
-								<input class="input" type="submit" value="Upload File to Server">
-							</div>
-						</form>
-						<div>
-							<label>Progress</label>
-							<div class="progress">
-								<div class="bar"></div >
-								<div class="percent">0%</div >
-							</div>
-							<div id="status"></div>
-						</div>
+						<h2><a href="/cgi-bin/upgrade">Firmware upgrade.</a></h2>
 					</div>
 				</div>
 			</div>

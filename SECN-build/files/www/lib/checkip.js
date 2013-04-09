@@ -2,20 +2,7 @@ $(document).ready( function() {
 // call easytabs
 	$('#outer-container, #inner-container').easytabs();
 	
-// form submit responses
-$('#MP').ajaxForm(function() { 
-	alert("Changes submitted."); 
-}); 
-$('#MP-ADV').ajaxForm(function() { 
-	alert("Changes submitted."); 
-}); 
 
-// option to hide checkum in firmware upgrade 
-    $("input[name='tocheck']").click(function() {
-        var val = $(this).val();
-        $('.hidechecksum').hide();
-        $('#'+val).show();
-    });
 
 // function to refresh iframes on status page
     setInterval(refreshIframe, 10000);
@@ -26,29 +13,6 @@ $('#MP-ADV').ajaxForm(function() {
         $("#FrameID4")[0].src = $("#FrameID4")[0].src;
     }
 
-// File upload progress bar
-
-    (function() {
-        var bar = $('.bar');
-        var percent = $('.percent');
-        var status = $('#status');
-        $('#fupload').ajaxForm({
-            beforeSend: function() {
-                status.empty();
-                var percentVal = '0%';
-                bar.width(percentVal)
-                percent.html(percentVal);
-            },
-            uploadProgress: function(event, position, total, percentComplete) {
-                var percentVal = percentComplete + '%';
-                bar.width(percentVal)
-                percent.html(percentVal);
-            },
-            complete: function(xhr) {
-                status.html(xhr.responseText);
-            }
-        }); 
-    })();     
 
 // jquery form validator code
 
