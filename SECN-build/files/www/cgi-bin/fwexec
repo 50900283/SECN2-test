@@ -22,11 +22,11 @@
     </div>
 
 	
-	<h2> Upgrading firmware. Please wait 2 minutes. </h2>
+	<h2> Upgrading firmware. Please wait for the timer to count down. </h2>
 
-	<span id="seconds">120</span>.
+  <h2>Time remaining:	<span id="seconds">145</span>.</h2>
 	<script>
-	  var seconds = 120;
+	  var seconds = 145;
 	  setInterval(
   	    function(){
               document.getElementById('seconds').innerHTML = --seconds;
