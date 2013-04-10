@@ -20,7 +20,7 @@ fi
 #---------------------------------------------
 
 # Start or stop dnsmasq now and enable on boot up as required
-
+DHCP_ENABLE=`uci get secn.dhcp.enable`
 if [ $DHCP_ENABLE = "checked" ]; then
 
   # Enable start on boot
