@@ -1,13 +1,15 @@
 #! /bin/sh
 
-# Make script for all TP Link devices
+# Build script for TP Link devices
+
+echo ""
 
 # Check to see if setup script has already run
 if [ ! -f ./already_configured ]; then 
-  echo " Build environment not configured. Quitting now"
+  echo "Build environment not configured. Quitting now"
   exit
 else
-  echo " Build environment is configured. Continuing with build"
+  echo "Build environment is configured. Continuing with build"
   echo ""
 fi
 
@@ -17,7 +19,7 @@ echo "Start build process"
 
 # Set up version strings
 VER="Version 2.0 Beta 1e (r34386)"
-DIRVER="B-1e"
+DIRVER="Beta-1e"
 
 ###########################
 
@@ -31,6 +33,8 @@ echo "Set up new directory name with date and version"
 DATE=`date +%Y-%m-%d-%H:%M`
 DIR=$DATE"-TP-"$DIRVER
 
+###########################
+
 # Set up build directory
 echo "New build directory  ./bin/ar71xx/builds/build-"$DIR
 mkdir ./bin/ar71xx/builds/build-$DIR
@@ -42,7 +46,6 @@ touch ./bin/ar71xx/builds/build-$DIR/md5sums
 
 echo '----------------------------'
 
-
 echo "Set up files for WR842 "
 DEVICE="WR842"
 
@@ -50,6 +53,7 @@ rm -r ./files/*
 cp -r ./SECN-build/files       .        ; echo "Copy generic files"
 cp -r ./SECN-build/WR842/files .        ; echo "Overlay device specific files"
 ./FactoryRestore.sh											; echo "Build Factory Restore tar file"
+
 echo "Check files "
 ls -al ./files   
 echo ""
@@ -80,6 +84,7 @@ make
 echo  "Move files to build folder"
 mv ./bin/ar71xx/*-squash*sysupgrade.bin ./bin/ar71xx/builds/build-$DIR
 mv ./bin/ar71xx/*-squash*factory.bin    ./bin/ar71xx/builds/build-$DIR
+
 echo "Clean up unused files"
 rm ./bin/ar71xx/openwrt-*
 echo "Update md5sums"
