@@ -179,7 +179,7 @@ MODEMPORT=`uci get secn.modem.modemport`
 # GatewayTest Status message
 GATEWAY_STATUS=`cat /tmp/gatewaystatus.txt`
 
-# Check if system password has been set
+# Check if password is set and prepare status message if not
 PWDSET=`uci get secn.http.pw_preset`
 if [ $PWDSET = "0" ]; then
 	echo "System password has not been set" > /tmp/passwordstatus.txt

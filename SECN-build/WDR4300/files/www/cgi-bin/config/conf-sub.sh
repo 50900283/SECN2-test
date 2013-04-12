@@ -70,7 +70,7 @@ fi
 # Get logged in user
 LOGINUSER=`cat /tmp/auth.txt`
 
-# Change password, save the result and prepare status message
+# Change password, save the result, prepare status message, set web auth on.
 rm /tmp/passwordstatus.txt
 if [ \$BUTTON = "Set+Password" ]; then
 	date > /tmp/setpassword.txt

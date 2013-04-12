@@ -5,8 +5,23 @@ body, input, select, textarea {
 p, h1, form, button{border:0; margin:0; padding:0;}
 .spacer{clear:both; height:1px;}
 
-/* ----------- CSS for tabs ----------- */
 
+.banner {
+    width:930px;
+    margin:0 auto;
+    height: 60px;
+}
+.logo {
+	vertical-align: top;
+}
+.titletext       {
+    float: right;
+    text-align: right;
+}
+.textbanner {
+	vertical-align: text-bottom;
+}
+/* ----------- Added CSS for File Upload ---------*/
 .section {
     margin: 0 0 30px;
     margin:0 auto;
@@ -19,25 +34,84 @@ p, h1, form, button{border:0; margin:0; padding:0;}
     border:solid 2px #b7ddf2;
     background: #FDE2BB;
 }
-.myform {
-    height:660px;
+
+form.upload { display: block; margin: 20px auto; background: #eee; border-radius: 10px; padding: 15px }
+.progress { position:relative; width:400px; border: 1px solid #ddd; padding: 1px; border-radius: 3px; }
+.bar { background-color: #B4F5B4; width:0%; height:20px; border-radius: 3px; }
+.percent { position:absolute; display:inline-block; top:3px; left:48%; }
+
+div.block{
+  overflow:hidden;
 }
-.myform-adv {
-    height: 1100px;
+div.block label{
+  width:160px;
+  display:block;
+  float:left;
+  text-align:left;
 }
-.myform-adv2 {
-    height: 740px;
+div.block .input{
+  margin-left:4px;
+  float:left;
 }
-.myform-wireless {
-    height: 910px;
+
+/* ----------- CSS for easytabs ----------- */
+#outer-container {
+    width: 920px;
+    margin: 0 auto;
 }
+#outer-container .panel-container {
+    border: solid 1px #999;
+}
+#outer-container .tab {
+    border: solid 1px #999;
+    border-bottom: none;
+}
+#inner-container .panel-container {
+    border: solid 1px #aaa;
+}
+#inner-container .tab {
+    border: solid 1px #aaa;
+    border-bottom: none;
+}
+.etabs { 
+    margin:0 auto;
+	padding: 0;
+}
+.tab { 
+	display: inline-block;
+	zoom:1;
+	*display:inline;
+	background: #eee;
+    border-radius: 4px 4px 0 0;
+	border-bottom: none;
+		-moz-border-radius: 4px 4px 0 0;
+		-webkit-border-radius: 4px 4px 0 0;
+}
+.tab a { font-size: 14px; line-height: 2em; display: block; padding: 0 10px; outline: none;  }
+.tab a:hover { text-decoration: underline; }
+.tab.active { background: #fff; padding-top: 6px; position: relative; top: 1px; border-color: #666; background: #FDE2BB;}
+.tab a.active { font-weight: bold; }
+
+
+.tab-container .panel-container { 
+    margin:0 auto;
+    border-radius: 0 10px 10px 10px; 
+    padding: 10px;
+        -moz-border-radius: 0 10px 10px 10px; 
+        -webkit-border-radius: 0 10px 10px 10px;
+    background: #FDE2BB;
+}
+.panel-container { margin-bottom: 10px; }
+
+
+
 iframe {
     width:100%;
     overflow-y:auto;
     overflow-x:auto;
 }
 .topbar {
-    width:650px;
+    width:850px;
     height:100px;
     display: inline;
 }
@@ -46,78 +120,42 @@ iframe {
     text-align: right;
 }
 
-ul.tabs {
-    height: 28px;
-    line-height: 25px;
-    list-style: none;
-    border-bottom: 1px solid #DDD;
-}
-.tabs li {
-    float: left;
-    display: inline;
-    margin: 0 1px -1px 0;
-    padding: 0 13px 1px;
-    color: #777;
-    cursor: pointer;
-    border: 1px solid #E4E4E4;
-    border-bottom: 1px solid #F9F9F9;
-    position: relative;
-}
-.tabs li:hover,
-.vertical .tabs li:hover {
-    color: #F70;
-    padding: 0 13px;
-    background: #FFFFDF;
-    border: 1px solid #FFCA95;
-}
-.tabs li.current {
-    color: #444;
-    padding: 0 13px 2px;
-    border: 1px solid #D4D4D4;
-    background: #FFFFFF;
-    border-bottom: 1px solid #EFEFEF;
-}
-.box {
-    display: none;
-    border-width: 0 1px 1px;
-    padding: 0 12px;
-}
-.box.visible {
-    display: block;
-}
 
 
 /* ----------- stylized ----------- */
 
-#stylized{
-    background: #FDE2BB;
-}
-#stylized h1 {
-    font-size:14px;
+h1 {
+    font-size:18px;
     font-weight:bold;
     margin-bottom:8px;
-    float: right;
+    vertical-align: bottom;
 }
-#stylized fieldset {
+
+legend {
+	font-size:12px;
+    font-weight:bold;
+}
+
+fieldset {
     margin: 14px 0px 14px 0px;
     padding: 14px;
        -moz-border-radius: 10px;
-        -webkit-border-radius: 10px;
-        -khtml-border-radius: 10px;
+       -webkit-border-radius: 10px;
+       -khtml-border-radius: 10px;
 }
 
-#stylized p{
-font-size:11px;
-color:#666666;
-margin-bottom:0px;
-padding-bottom:10px;
+p{
+	font-size:11px;
+	color:#666666;
+	margin-bottom:0px;
+	padding-bottom:10px;
 }
 
-#stylized table {
+table {
     border-collapse: collapse;
     empty-cells: show;
 }
-#stylized .label {
+.label {
     padding-right: 8px;
     padding-top: 7px;
     padding-bottom: 10px;
@@ -126,11 +164,16 @@ padding-bottom:10px;
     white-space: nowrap;
     width: 125px;
 }
-#stylized .field {
+.field {
     vertical-align: top;
     white-space: nowrap;
 }
-#stylized .ast_reg {
+#stylized .field4 {
+    vertical-align: top;
+    white-space: nowrap;
+    width: 20px;
+}
+.ast_reg {
     padding-right: 8px;
     padding-top: 7px;
     text-align: left;
@@ -140,7 +183,7 @@ padding-bottom:10px;
     white-space: nowrap;
     width: 125px;
 }
-#stylized table.submitform {
+table.submitform {
     margin-top: 5px;
     margin-left:auto;
     margin-right:6px;
@@ -149,7 +192,7 @@ padding-bottom:10px;
     white-space: nowrap;
     width: 100px;
 }
-#stylized table.buttons {
+table.buttons {
     padding-right: 8px;
     padding-top: 7px;
     text-align: right;
@@ -157,7 +200,7 @@ padding-bottom:10px;
     white-space: nowrap;
     width: 275px;
 }
-#stylized table.buttons-adv {
+table.buttons-adv {
     padding-right: 8px;
     padding-top: 7px;
     text-align: right;
@@ -167,10 +210,10 @@ padding-bottom:10px;
 }
 
 
-#stylized .textfield {
+.textfield {
     width: 150px;
 }
-#stylized label.error {
+label.error {
     background: url("images/unchecked.gif") no-repeat scroll 0 0 transparent;
     display: block;
     color: #EA5200;
@@ -179,7 +222,7 @@ padding-bottom:10px;
     padding-left: 16px;
     margin-left: 5px;
 }
-#stylized label.checked {
+label.checked {
     background: url("") no-repeat scroll 0 0 transparent;
     display: block;
     color: #EA5200;
@@ -189,23 +232,23 @@ padding-bottom:10px;
     padding-left: 16px;
     margin-left: 5px;
 }
-#stylized .success_msg {
+.success_msg {
     color: #0060BF;
     font-weight: bold;
     margin-left: 19px;
 }
 
-#stylized .go { 
-padding-top: 16px;
-height: 50px;
-width: 900px;
-float: left;
+.go { 
+	padding-top: 16px;
+	height: 50px;
+	width: 900px;
+	float: left;
 }
 
-#stylized em { 
-font-weight: bold; 
-padding-right: 1em; 
-vertical-align: top; 
+em { 
+	font-weight: bold; 
+	padding-right: 1em; 
+	vertical-align: top; 
 }
 
 
