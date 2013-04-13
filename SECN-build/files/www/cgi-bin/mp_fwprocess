@@ -1,0 +1,47 @@
+#!/usr/bin/haserl  --upload-limit=32768      
+<% echo -en "content-type: text/html\r\n\r\n" %>
+<html>
+<head></head>
+<body>
+
+<% if test -n "$HASERL_uploadvmlinux_path"; then %>
+    <div id="status"></div>
+    <p>
+    You uploaded: <b><% echo -n $FORM_uploadvmlinux_name %></b> and <b><% echo -n $FORM_uploadroot_name %></b><br>
+    <p>
+    <% mv $FORM_uploadvmlinux /tmp/$FORM_uploadvmlinux_name %>
+    <% mv $FORM_uploadroot /tmp/$FORM_uploadroot_name %>
+    <% chmod 755 /tmp/$FORM_uploadvmlinux_name %>
+    <% chmod 755 /tmp/$FORM_uploadroot_name %>
+    <% vmlinux_md5sum=$( md5sum /tmp/$FORM_uploadvmlinux_name | cut -d' ' -f1 ) %>
+    <% root_md5sum=$( md5sum /tmp/$FORM_uploadroot_name | cut -d' ' -f1 ) %>
+
+    <% if [ "$FORM_tocheck" != "ignore" ]; then %>
+    <table>
+    	<tr>
+    		<td align="right">The checksum of the uploaded file is:</td>
+    		<td><% echo $upload_md5sum %></td>
+    	</tr>
+    	<tr>
+    		<td align="right">The checksum you submitted is:</td>
+    		<td><% echo $FORM_checksum %></td>
+    	</tr>
+    </table>
+    <% fi %>
+    <% if [ "$upload_md5sum" != "$FORM_checksum" ] && [ "$FORM_tocheck" != "ignore" ]; then %>
+       I'm sorry, the uploaded file does not match the checksum you submitted.  Please reload this page and try again.
+    <% else %>
+        <% if [ "$FORM_tocheck" != "ignore" ]; then %>
+	       <b>Congratulations your checksums match.  The file uploaded correctly.</b>
+        <% fi %>
+	    <form action="/cgi-bin/mp_fwexec" method="POST">
+            <input type="hidden" name="vmlinux" value="<% echo -n /tmp/$FORM_uploadvmlinux_name %>">
+            <input type="hidden" name="root" value="<% echo -n /tmp/$FORM_uploadroot_name %>">
+	        <input type="submit" value="Upgrade Firmware">
+	    </form>
+    <% fi %>
+    
+<% fi %>
+
+</body>
+</html> 
